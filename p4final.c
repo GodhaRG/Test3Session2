@@ -1,45 +1,48 @@
-/*
-
-Write a program to find nth number in fibonacci sequence.
-Fibonacci sequence consists of 0,1,1,2,3,5,8,13,21........
-int input();
-int find_fibo(int n);
-void output(int n, int fibo);
-
-*/
-
-#include <stdio.h>
-
-int input()
+#include<stdio.h>
+int input_degree()
 {
   int n;
-  printf("Enter the number\n");
+  printf("enter degree of polynomial\n");
   scanf("%d",&n);
   return n;
 }
-int find_fibo(int n)
+float input_x()
 {
-  int fibo=0;
-  int a=0;
-  int b=1;
-  for(int i=0;i<n;i++) {
-    fibo = a;
-    a = b;
-    b = fibo + b;
-  }
-  return fibo;
+  float x;
+  printf("enter value of x \n");
+  scanf("%f",&x);
+  return x;
 }
-
-
-void output(int n, int fibo)
+void input_coefficients(int n,float a[n])
 {
-  printf("the %dth fibonacci number is %d\n", n, fibo);
+  printf("enter the coefficients of polynomial\n");
+  for(int i=0;i<n;i++)
+    {
+      scanf("%f",&a[i]);
+    }
 }
-
+float evaluate_polynomial(int n,float a[n],float x)
+{
+  float result=a[0];
+  for(int i=0;i<n-1;i++)
+    {
+      result=(x*result)+a[i+1];
+    }
+  return result;
+}
+void output(int n,float a[n],float x,float result)
+{
+  printf("%f",result);
+}
 int main()
 {
-  int n = input();
-  int fibo = find_fibo(n);
-  output(n, fibo);
-  return 0;
+  int n;
+  float x,result;
+  n=input_degree()+1;
+  float a[n];
+  x=input_x();
+  input_coefficients(n,a);
+  result=evaluate_polynomial(n,a,x);
+  output(n,a,x,result);
+  return 0;  
 }
