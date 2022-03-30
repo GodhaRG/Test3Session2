@@ -13,10 +13,12 @@ Fraction input_fraction()
 }
 Fraction Largest_fraction(Fraction f1,Fraction f2,Fraction f3)
 {
+  
+  
 }
 void output(Fraction f1, Fraction f2, Fraction f3, Fraction largest)
 {
-  printf("the smallest of the three fractions is %d/%d\n",largest);
+  printf("the smallest of the three fractions is   %d / %d\n", largest.num,largest.den);
 }
 int main()
 {
