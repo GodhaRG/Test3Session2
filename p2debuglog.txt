@@ -1,1 +1,125 @@
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x8e1: file p2final.c, line 46.
+(gdb) r
+Starting program: /home/runner/Test3Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p2final.c:46
+46    f1=input_fraction();
+(gdb) s
+input_fraction () at p2final.c:8
+8   {
+(gdb) n
+10    printf("input a fraction\n");
+(gdb) n
+input a fraction
+11    scanf("%f%f",&f.num,&f.den);
+(gdb) n
+1 6
+12    return f;
+(gdb) n
+13  }
+(gdb) n
+main () at p2final.c:47
+47    f2=input_fraction();
+(gdb) s
+input_fraction () at p2final.c:8
+8   {
+(gdb) n
+10    printf("input a fraction\n");
+(gdb) n
+input a fraction
+11    scanf("%f%f",&f.num,&f.den);
+(gdb) n
+1 4
+12    return f;
+(gdb) n
+13  }
+(gdb) n
+main () at p2final.c:48
+48    f3=input_fraction();
+(gdb) s
+input_fraction () at p2final.c:8
+8   {
+(gdb) n
+10    printf("input a fraction\n");
+(gdb) n
+input a fraction
+11    scanf("%f%f",&f.num,&f.den);
+(gdb) n
+1 2
+12    return f;
+(gdb) n
+13  }
+(gdb) n
+main () at p2final.c:49
+49    largest=Largest_fraction(f1,f2,f3);
+(gdb) s
+Largest_fraction (f1=..., f2=..., f3=...) at p2final.c:18
+18    s1=f1.num/f1.den;
+(gdb) n
+19    s2=f2.num/f2.den;
+(gdb) p f1.num
+$1 = 1
+(gdb) p f1.den
+$2 = 6
+(gdb) p s1
+$3 = 0.166666672
+(gdb) p f2.num
+$4 = 1
+(gdb) p f2.den
+$5 = 4
+(gdb) n
+20    s3=f3.num/f3.den;
+(gdb) p s2
+$6 = 0.25
+(gdb) p f3.num
+$7 = 1
+(gdb) p f3.den
+$8 = 2
+(gdb) n
+21    if(s1<s2&&s1<s3)
+(gdb) p s3
+$9 = 0.5
+(gdb) n
+23      largest.num=f1.num;
+(gdb) n
+24      largest.den=f1.den;
+(gdb) p largest.num
+$10 = 1
+(gdb) n
+36    return largest;
+(gdb) p largest.den
+$11 = 6
+(gdb) n
+37  } 
+(gdb) n
+main () at p2final.c:50
+50    output(f1,f2,f3,largest);
+(gdb) s
+output (f1=..., f2=..., f3=..., largest=...) at p2final.c:41
+41    printf("the smallest of the three fractions is   %f / %f\n", largest.num,largest.den);
+(gdb) n
+the smallest of the three fractions is   1.000000 / 6.000000
+42  }
+(gdb) n
+main () at p2final.c:51
+51    return 0;
+(gdb) n
+52  }(gdb) n
