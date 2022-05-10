@@ -3,30 +3,31 @@
 void input_string(char *a)
 {
   printf("enter the string\n");
-  scanf("%s",a);
+  fgets(a,20,stdin);
 }
 int count_words(char *string)
 {
-  int no_words=1;
-  for(int i=0;string[i]!='\0';i++)
+  char *token=strtok(string," ");
+  int count=0;
+  while(token!=NULL)
     {
-      if(string[i]==' '||string[i]=='\n'||string[i]=='\t')
-        {
-          no_words=no_words+1;
-        }
-}
-  return no_words;
+      count++;
+      printf("%s ",token);
+      token=strtok(NULL," ");
+    }
+  return count;
 }
 void output(char *string,int no_words)
 {
-  printf("the total number of words  in the string %s is %d\n",string,no_words);
+  printf("is %d",no_words );
 }
 int main()
 {
-  char a,s;
+  char s[20];
   int no_words;
-  input_string(&a);
-  no_words=count_words(&s);
-  output(&s,no_words);
+  input_string(s);
+  no_words=count_words(s);
+  printf("the number of words in the string ");
+  output(s,no_words);
   return 0;
-}
+}// output(s,count_words(s));

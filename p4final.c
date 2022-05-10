@@ -15,34 +15,37 @@ float input_x()
 }
 void input_coefficients(int n,float a[n])
 {
-  printf("enter the coefficients of polynomial\n");
   for(int i=0;i<n;i++)
     {
+      printf("enter the coefficients of polynomial\n");
       scanf("%f",&a[i]);
     }
 }
 float evaluate_polynomial(int n,float a[n],float x)
 {
-  float result=a[0];
-  for(int i=0;i<n-1;i++)
+  int  res=a[0];
+  for(int i=1;i<n;i++)
     {
-      result=(x*result)+a[i+1];
+      res=res*x+a[i];
     }
-  return result;
+  return res;
 }
-void output(int n,float a[n],float x,float result)
+void output(int n,float a[n],float x,float res)
 {
-  printf("%f",result);
+  for(int i=0,j=n;i<n;i++,j--)
+    {
+ printf("% .1fx^%d+" ,a[i],j-1);
 }
+  printf("at x=%.1f =%.1f",x,res);
+  }
 int main()
 {
-  int n;
-  float x,result;
-  n=input_degree()+1;
-  float a[n];
-  x=input_x();
-  input_coefficients(n,a);
-  result=evaluate_polynomial(n,a,x);
-  output(n,a,x,result);
+  int  x,y,z;
+  x=input_degree()+1;
+  y=input_x();
+  float a[x];
+  input_coefficients(x,a);
+  z=evaluate_polynomial(x,a,y);
+  output(x,a,y,z);
   return 0;  
 }
